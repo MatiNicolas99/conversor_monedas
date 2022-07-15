@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Conversor</title>
+</head>
+
+<body>
+    <h1>Conversor de monedas Nacional</h1>
+    <div class="container">
+        <div class="container-card">
+            <div class="container-form">
+                <h2>Pesos CLP</h2>
+                <div class="form-text">
+                    <input id="input-number" type="number" placeholder="Monto a convertir" min="0">
+                </div>
+                <div class="form-select">
+                    <h3>Moneda a convertir</h3>
+                    <div id="select">
+                        <select name="monedas" id="select-monedas">
+                            <option value="dolar">Dolar</option>
+                            <option value="euro">Euro</option>
+                            <option value="uf">UF</option>
+                        </select>
+                        <button class="btn">Buscar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="resultados">
+                <p class="resultado">Monto ingresado: <span id="cantidad-buscada"></span></p>
+                <p class="resultado">Resultado: <span id="valor-resultado"></span></p>
+            </div>
+        </div>
+        <div class="grafica-monedas">
+            <canvas id="grafica-monedas">
+    
+            </canvas>
+        </div>
+    </div>
+   
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
