@@ -2,6 +2,7 @@
 const btn = document.querySelector('.btn');
 const valorResultado = document.getElementById('valor-resultado');
 const cantidadBuscada = document.getElementById('cantidad-buscada');
+const mensaje_error = document.getElementById('error');
 let miCanvas = document.getElementById('grafica-monedas').getContext('2d');
 let myChart
 
@@ -19,7 +20,9 @@ const fetchDatos = async (moneda) => {
 
     } catch (error) {
 
-        console.log(error);
+        mensaje_error.classList.toggle('hide');
+        mensaje_error.innerHTML = error;
+        setTimeout(() => mensaje_error.classList.toggle('hide'), 6000);     
 
     };
 
@@ -32,8 +35,8 @@ const transformarDato = (dato, moneda) => {
     let valorTransformado
     let valorFinal
 
-    if (valorInput < 0 || valorInput === NaN || valorInput === undefined) {
-        alert("La cantidad ingresada es incorrecto, favor intenta nuevamente")
+    if (valorInput < 0 || valorInput === NaN || valorInput === undefined || valorInput == "") {
+        alert("La cantidad ingresada es incorrecta, favor intenta nuevamente")
         cantidadBuscada.innerHTML = ""
         valorResultado.innerHTML = ""
         
@@ -71,6 +74,7 @@ const ordenandoDatos = (serieDatos) => {
     const fechas = datoOrdenado.map(x => formateoFecha(x.fecha));
     const valorMoneda = datoOrdenado.map(x => x.valor);
     crearGrafico(valorMoneda, fechas);
+
 };
 
 //FUNCION QUE FORMATEA FECHA
@@ -90,6 +94,7 @@ const crearGrafico = (valores, fechas) => {
     if(myChart) {
         myChart.destroy();
     }
+
  myChart = new Chart(miCanvas, {
         type: 'line',
         data: {
